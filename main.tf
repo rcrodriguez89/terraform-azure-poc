@@ -95,7 +95,7 @@ resource azurerm_automation_schedule sch_start_srv_app_gw {
   interval                = 1
   //timezone                = "Central America Standard Time"
   timezone    = "America/Costa_Rica"
-  start_time  = "${local.start_time_srv_app_gw}"
+  start_time  = local.start_time_srv_app_gw
   description = "Will Start Application Gateway Service"
   week_days   = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 }
@@ -109,7 +109,7 @@ resource azurerm_automation_schedule sch_stop_srv_app_gw {
   interval                = 1
   //timezone                = "Central America Standard Time"
   timezone    = "America/Costa_Rica"
-  start_time  = "${local.stop_time_srv_app_gw}"
+  start_time  = local.stop_time_srv_app_gw
   description = "Will Stop Application Gateway Service"
   week_days   = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 }
@@ -142,9 +142,8 @@ data azurerm_virtual_machine_scale_set vm_scale_set {
   resource_group_name = data.azurerm_resource_group.rg_ap.name
 }
 
-
 resource "azurerm_monitor_autoscale_setting" "auto_sc_setting" {
-  name                = "aks-agentpool-23362959-vmss-Autoscale-945"
+  name                = var.rg_agent_pool_autoscale
   enabled             = true
   resource_group_name = data.azurerm_resource_group.rg_ap.name
   location            = data.azurerm_resource_group.rg_ap.location

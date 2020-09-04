@@ -21,6 +21,12 @@ variable rg_agent_pool {
   default     = "MC_NekoResourceGroup_NekoAKS_eastus"
 }
 
+variable rg_agent_pool_autoscale {
+  type        = string
+  description = "Resource Agent Pool Autoscale"
+  default     = "aks-agentpool-23362959-vmss-Autoscale-945"
+}
+
 variable aks_agent_pool {
   type        = string
   description = "AKS Agent Pool"
